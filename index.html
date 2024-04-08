@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurse Care Program</title>
+    <link rel="stylesheet" href="./Styles/style.css">
+</head>
+<body>
+    <div id="page" class="site">
+        <div class="container">
+            <div class="form-box">
+                <div class="progress">
+                    <div class="logo">
+                        <a href="#">
+                            PAD Assessment <br> <p>Peripheral Artery Disease</p>
+                        </a>
+                    </div>
+                    <ul class="progress-steps">
+                        <li class="step active">
+                            <span>A</span>
+                            <p>Assessment<br><span>Gather patient data</span></p>
+                        </li>
+                        <li class="step">
+                            <span>D</span>
+                            <p>Diagnosis<br><span>Identify Health issues</span></p>
+                        </li>
+                        <li class="step">
+                            <span>P</span>
+                            <p>Planning<br><span>Develop care plan</span></p>
+                        </li>
+                        <li class="step">
+                            <span>I</span>
+                            <p>Intervention<br><span>Implement care plan</span></p>
+                        </li>
+                        <li class="step">
+                            <span>E</span>
+                            <p>Evaluation<br><span>Assess care outcomes</span></p>
+                        </li>
+
+                    </ul>
+                </div>
+                <form action="">
+                    <div class="form-one form-step active">
+                        <div class="bg-svg"></div>
+                        <h2>Personal Information</h2>
+                        <p>Enter your personal information correctly</p>
+                        <div>
+                            <label>Full Name</label>
+                            <input type="text" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div>
+                            <label>Age</label>
+                            <input type="number" placeholder="e.g. 53" required>
+                        </div>
+                        <div>
+                            <label>Gender</label>
+                            <div class="genderSelection">
+                                <input class="gender" type="radio" name="gender" value="male" required> Male
+                                <input class="gender" type="radio" name="gender" value="female" required> Female
+                            </div>
+                            
+                        </div> 
+                        <div class="bloodPressure">
+                            <label>Blood Pressure</label>
+                            <input type="text" placeholder="e.g. 150/90" required>
+                        </div>
+                        <div>
+                            <label>Weight (kg)</label>
+                            <input type="number" placeholder="e.g. 70" required>
+                        </div>
+                        <div>
+                            <label>Height (cm)</label>
+                            <input type="number" placeholder="e.g. 170" required>
+                        </div>
+                        <h3>Contact</h3>
+                        <div>
+                            <label>Phone </label>
+                            <input type="tel" placeholder="+62xxxxxx" required>
+                        </div>
+                        <div>
+                            <label>Address</label>
+                            <input type="text" placeholder="Street Address" required>
+                        </div>
+                        <div>
+                            <label>City</label>
+                            <input type="text" placeholder="City" required>
+                        </div> 
+                        <div>
+                            <label>State</label>
+                            <input type="text" placeholder="State" required>
+                        </div>  
+                        <div>
+                            <label>Zip Code</label>
+                            <input type="text" placeholder="Zip Code" required>
+                        </div>
+                        <h2>Medical History</h2>
+                        <div>
+                            <label>Does the patient report any of the following: Dizziness, headached, or blurred vision?</label>
+                            <div class="dizzinessSelection">
+                                <input  type="radio" name="dizziness" value="yes" required> Yes
+                                <input  type="radio" name="dizziness" value="no" required> No
+                            </div>
+                        </div>
+                        <div>
+                            <label>Does the patient report any pain on their leg?</label>
+                            <div class="legPainSelection">
+                                <input class="legPain" type="radio" name="legPain" value="yes" required> Yes
+                                <input class="legPain" type="radio" name="legPain" value="no" required> No
+                            </div>
+                        </div>
+                        <div>
+                            <label>Does the patient experience uncomfortable aching, fatigue, tingling, cramping or pain in their feet, calves, buttocks, hip, or thigh during walking/exercise?</label>
+                            <div class="uncomfortableSelection">
+                                <input class="uncomfortable" type="radio" name="uncomfortable" value="yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="uncomfortable" value="no" required> No
+                            </div>
+                        </div>
+                        <div>
+                            <label>Does the pain go away when they stop walking/exercise?</label>
+                            <div class="uncomfortableSelection2">
+                                <input class="uncomfortable2" type="radio" name="uncomfortable2" value="yes" required> Yes
+                                <input class="uncomfortable2" type="radio" name="uncomfortable2" value="no" required> No
+                            </div>
+                        </div>
+                        <div>
+                            <label>Does the patient smoke?</label>
+                            <div class="smokeSelection">
+                                <input class="smoke" type="radio" name="smoke" value="yes" required> Yes
+                                <input class="smoke" type="radio" name="smoke" value="no" required> No
+                            </div>
+                        </div>
+                        <div>
+                            <label>Does the patient have diabetes</label>
+                            <div class="diabetesSelection">
+                                <input class="diabetes" type="radio" name="diabetes" value="yes" required> Yes
+                                <input class="diabetes" type="radio" name="diabetes" value="no" required> No
+                            </div>
+                        </div>
+                        <div>
+                            <h4>NOTE: Click submit first before proceeding to the next part. </h4>
+                        </div>    
+                    </div>
+                    <div class="form-two form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Diagnosis</h2>
+                        <p id="diagnosisParag"></p>
+                    </div>
+                    <div class="form-three form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Recommendations</h2>
+                        <p id="planParag"></p>
+                    </div>
+                    <div class="form-four form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Intervention</h2>
+                        <p id="intParag"></p>
+                    </div>
+                    <div class="form-five form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Evaluation</h2>
+                        <p id="evalParag"></p>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn-prev" disabled>Back</button>
+                        <button type="button" class="btn-next">Next</button>
+                        <button type="submit" class="btn-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./JS/script.js"></script>
+</body>
+</html>

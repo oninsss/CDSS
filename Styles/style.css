@@ -3,10 +3,10 @@
 :root{
     /* --main-color: #6c5ce7;
     --secondary-color: #a29bfe; */
-    --main-color: #05673a;
-    --secondary-color: #e6b156;
-    --lighter-color: #e0e0e7;
-    --light-color: #b0b0c0;
+    --main-color: #6c2b9e;
+    --secondary-color: #dc4288;
+    --lighter-color: #f6bddb;
+    --light-color: #cb95b2;
     --dark-color: #52505e;
 
     --font-smaller: 14px;
@@ -26,7 +26,8 @@ body{
     font-weight: 400;
     line-height: 1.8;
     color: var(--dark-color);
-    background-color: var(--lighter-color);
+    /* background-color: var(--lighter-color); */
+    background-color: #ffffff;
 }
 
 a{
@@ -50,7 +51,7 @@ img{
 }
 
 .container{
-    max-width: 1200px;
+    max-width: 1600px;
     width: 100%;
     margin: 0 auto;
     margin-bottom: 50px;
@@ -65,7 +66,7 @@ img{
     border: 6px solid var(--dark-color);
     border-radius: 15px;
     gap: 3em;
-    background-color: #faf9ff;
+    background-color: #fff7de;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -75,11 +76,14 @@ img{
 }
 
 .logo{
-    font-size: 1.75em;
+    font-size: 1.2em;
     font-weight: 800;
-    color: var(--dark-color);
+    color: #582284;
     padding: 40px 48px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
 }
 
 .logo span{
@@ -90,6 +94,12 @@ img{
     font-size: var(--font-smaller);
     font-weight: 400;
 }
+
+.logo img{
+    width: 50px;
+    height: 50px;
+}
+
 
 .progress ul.progress-steps{
     display: flex;
@@ -131,6 +141,7 @@ img{
 .progress ul.progress-steps li p span{
     font-size: var(--font-smaller);
     color: var(--light-color);
+    font-weight: 600;
     display: none;
 }
 
@@ -143,12 +154,29 @@ img{
     width: max-content;
 }
 
+
+
+#summary span{
+    width: 25px;
+    height: 25px;
+}
+
+#summary::before{
+    left: -77.5px;
+    top: -10px;
+}
+
+#summary p{
+    font-size: 0.75rem;
+}
+
 .gender{
     height: 20px;
 }
 
 .genderSelection, .dizzinessSelection, .diabetesSelection, .legPainSelection,
-.uncomfortableSelection, .uncomfortableSelection2, .smokeSelection{
+.uncomfortableSelection, .uncomfortableSelection2, .smokeSelection, .headacheSelection,
+.blurredSelection, .dChoiceOne, .dChoiceTwo, .dChoiceThree{
     display: flex;
     flex-direction: row;
     gap: 1em;
@@ -156,7 +184,22 @@ img{
     align-items: center;
 }
 
-#diagnosisParag, #planParag, #intParag, #evalParag{
+.uncomfortableSelection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: end;
+}
+
+.uncomfortableAching, .fatigue, .tingling, .cramping, .painInFeet, 
+.painInCalves, .painInThigh, .painInButtocks, .painInHip{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+}
+
+#diagnosisParag, #planParag, #intParag, #evalParag, #summaryParag{
     color: var(--dark-color);
 }
 
@@ -169,13 +212,13 @@ img{
 }
 
 form > div{
-    max-width: 400px;
+    max-width: 750px;
     margin: 0 auto;
 
 }
 
 form > div p {
-    color: var(--light-color);
+    color: #b0b0c0;
     margin-bottom: 2em;
 }
 
@@ -190,7 +233,7 @@ form :where(input, select){
     padding: 0 1em;
     border-radius: 7px;
     outline-color: var(--secondary-color);
-    border: 1px solid var(--lighter-color);
+    border: 1px solid var(--dark-color);
     background-color: transparent;
 }
 
@@ -222,6 +265,59 @@ form > div.active{
     display: block;
 }
 
+.form-box{
+    gap: 0;
+}
+
+.diabetesType{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+form .trueDiabetes{
+    display: none;
+}
+
+.bloodPressure p, .weight p{
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: red;
+    display: none;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+#fuBp, #fuWeight{
+    margin-left: 50px;
+    display: none;
+}
+
+#fuBp input, #fuWeight input{
+    width: 100%;
+}
+
+.form-two h3{
+    margin-top: 50px;
+    display: none;
+}
+
+.form-two table{
+    margin-bottom: 50px;
+    display: none;
+}
+
+.form-two .secondPart{
+    display: none;
+}
+
+#diagnosis, #recommendations, #intervention, #evaluation{
+    height: 300px;
+    text-align: start;
+    padding: 10px;
+}
+
 .btn-group{
     display: flex;
     flex-wrap: wrap;
@@ -241,18 +337,20 @@ form > div.active{
 }
 
 .btn-group [class*="btn-"]:disabled{
-    background-color: var(--light-color);
-    border-color: var(--lighter-color);
+    background-color: #b0b0c0;
+    border-color: #e0e0e7;
     cursor: text;
 }
 
 .btn-group [class*="btn-"]:hover:not(:disabled){
-    background-color: var(--dark-color);
-    border-color: var(--light-color);
+    /* background-color: var(--dark-color);
+    border-color: var(--light-color); */
+    transform: scale(1.1);
+    transition: all 0.3s ease-out;
 }
 
 ::placeholder{
-    color: var(--light-color);
+    color: #b0b0c0;
 }
 
 @media screen and (min-width: 768px) {

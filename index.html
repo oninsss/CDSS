@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nurse Care Program</title>
     <link rel="stylesheet" href="./Styles/style.css">
+    <link rel="icon" href="./Images/leftLogo.png">
 </head>
 <body>
     <div id="page" class="site">
@@ -12,14 +13,20 @@
             <div class="form-box">
                 <div class="progress">
                     <div class="logo">
+                        <img src="./Images/leftLogo.png" alt="">
                         <a href="#">
-                            PAD Assessment <br> <p>Peripheral Artery Disease</p>
+                            Far Eastern Medical<br> and <br>Emergency Center<br> <p>Institute of Health Sciences and Nursing</p>
                         </a>
+                        <img src="./Images/rightLogo.png" alt="">
                     </div>
                     <ul class="progress-steps">
                         <li class="step active">
                             <span>A</span>
                             <p>Assessment<br><span>Gather patient data</span></p>
+                        </li>
+                        <li class="step" id="summary">
+                            <span>S</span>
+                            <p>Summary of Assessment</p>
                         </li>
                         <li class="step">
                             <span>D</span>
@@ -47,116 +54,338 @@
                         <p>Enter your personal information correctly</p>
                         <div>
                             <label>Full Name</label>
-                            <input type="text" placeholder="e.g. John Doe" required>
+                            <input type="text" placeholder="e.g. John Doe"  id="fName" required>
                         </div>
                         <div>
                             <label>Age</label>
-                            <input type="number" placeholder="e.g. 53" required>
+                            <input type="number" placeholder="e.g. 53" id="pAge" required>
                         </div>
                         <div>
                             <label>Gender</label>
                             <div class="genderSelection">
-                                <input class="gender" type="radio" name="gender" value="male" required> Male
-                                <input class="gender" type="radio" name="gender" value="female" required> Female
+                                <input class="gender" type="radio" name="gender" value="Male" required> Male
+                                <input class="gender" type="radio" name="gender" value="Female" required> Female
                             </div>
                             
                         </div> 
-                        <div class="bloodPressure">
-                            <label>Blood Pressure</label>
-                            <input type="text" placeholder="e.g. 150/90" required>
-                        </div>
-                        <div>
-                            <label>Weight (kg)</label>
-                            <input type="number" placeholder="e.g. 70" required>
-                        </div>
-                        <div>
-                            <label>Height (cm)</label>
-                            <input type="number" placeholder="e.g. 170" required>
-                        </div>
+                        
+                        
                         <h3>Contact</h3>
                         <div>
                             <label>Phone </label>
-                            <input type="tel" placeholder="+62xxxxxx" required>
+                            <input type="tel" placeholder="+62xxxxxx"  id="telNum" required>
                         </div>
                         <div>
                             <label>Address</label>
-                            <input type="text" placeholder="Street Address" required>
+                            <input type="text" placeholder="Street Address" id="sttAdd" required>
                         </div>
                         <div>
                             <label>City</label>
-                            <input type="text" placeholder="City" required>
+                            <input type="text" placeholder="City" id="cityAdd" required>
                         </div> 
-                        <div>
+                        <!-- <div>
                             <label>State</label>
-                            <input type="text" placeholder="State" required>
-                        </div>  
+                            <input type="text" placeholder="State" id="stateAdd" required>
+                        </div>   -->
                         <div>
                             <label>Zip Code</label>
-                            <input type="text" placeholder="Zip Code" required>
+                            <input type="text" placeholder="Zip Code" id="zipAdd" required>
                         </div>
                         <h2>Medical History</h2>
+                        <div class="bloodPressure">
+                            <label>Blood Pressure</label>
+                            <input type="text" placeholder="e.g. 150/90" id="bp" required>
+                            <p id="bpParag"></p>
+                            <div id="fuBp">
+                                <label>Medicines for Hypertension</label>
+                                <input type="text" id="medForHype" placeholder="e.g. Enalarpril">
+                            </div>
+                            
+                        </div>
                         <div>
-                            <label>Does the patient report any of the following: Dizziness, headached, or blurred vision?</label>
+                            <label>Height (cm)</label>
+                            <input type="number" name="height" placeholder="e.g. 170" required>
+                        </div>
+                        <div class="weight">
+                            <label>Weight (kg)</label>
+                            <input type="number" placeholder="e.g. 70" id="weight" name="weight"required>
+                            <p id="weightParag"></p>
+                            <div id="fuWeight">
+                                <label>Describe the patient's lifestyle</label>
+                                <input type="text"  placeholder="e.g. My diet mainly consists of fast food and processed meals... ">
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Does the patient report any of the following:</h4>
+                            <label>Dizziness</label>
                             <div class="dizzinessSelection">
-                                <input  type="radio" name="dizziness" value="yes" required> Yes
-                                <input  type="radio" name="dizziness" value="no" required> No
+                                <input  type="radio" name="dizziness" value="Yes" required> Yes
+                                <input  type="radio" name="dizziness" value="No" required> No
+                            </div>
+                            <label>Headache</label>
+                            <div class="headacheSelection">
+                                <input  type="radio" name="headache" value="Yes" required> Yes
+                                <input  type="radio" name="headache" value="No" required> No
+                            </div>
+                            <label>Blurred Vision</label>
+                            <div class="blurredSelection">
+                                <input  type="radio" name="blurred" value="Yes" required> Yes
+                                <input  type="radio" name="blurred" value="No" required> No
                             </div>
                         </div>
                         <div>
-                            <label>Does the patient report any pain on their leg?</label>
+                            <h4>Does the patient report any pain on their leg?</h4>
                             <div class="legPainSelection">
-                                <input class="legPain" type="radio" name="legPain" value="yes" required> Yes
-                                <input class="legPain" type="radio" name="legPain" value="no" required> No
+                                <input class="legPain" type="radio" name="legPain" value="Yes" required> Yes
+                                <input class="legPain" type="radio" name="legPain" value="No" required> No
                             </div>
                         </div>
-                        <div>
-                            <label>Does the patient experience uncomfortable aching, fatigue, tingling, cramping or pain in their feet, calves, buttocks, hip, or thigh during walking/exercise?</label>
-                            <div class="uncomfortableSelection">
-                                <input class="uncomfortable" type="radio" name="uncomfortable" value="yes" required> Yes
-                                <input class="uncomfortable" type="radio" name="uncomfortable" value="no" required> No
+                        <div class="expFoll">
+                            <h4>Does the patient experience the following?</h4>
+                            <label>Uncomfortable Aching</label>
+                            <div class="uncomfortableAching">
+                                
+                                <input class="uncomfortable" type="radio" name="uncomfortable" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="uncomfortable" value="No" required> No
                             </div>
+                            <label>Fatigue</label>
+                            <div class="fatigue">
+                                
+                                <input class="uncomfortable" type="radio" name="fatigue" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="fatigue" value="No" required> No
+                            </div>
+                            <label>Tingling</label>
+                            <div class="tingling">
+                                
+                                <input class="uncomfortable" type="radio" name="tingling" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="tingling" value="No" required> No
+                            </div>
+                            <label>Cramping</label>
+                            <div class="cramping">
+                                
+                                <input class="uncomfortable" type="radio" name="cramping" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="cramping" value="No" required> No
+                            </div>
+                            <br>
+                            <h4>Does the patient experience pain in the following while exercising?</h4>
+                            <label>Feet</label>
+                            <div class="painInFeet">
+                                
+                                <input class="uncomfortable" type="radio" name="piFeet" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="piFeet" value="No" required> No
+                            </div>
+                            <label>Calves</label>
+                            <div class="painInCalves">
+                                
+                                <input class="uncomfortable" type="radio" name="piCalves" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="piCalves" value="No" required> No
+                            </div>
+                            <label>Buttocks</label>
+                            <div class="painInButtocks">
+                                
+                                <input class="uncomfortable" type="radio" name="piButtocks" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="piButtocks" value="No" required> No
+                            </div>
+                            <label>Hip</label>
+                            <div class="painInHip">
+                                
+                                <input class="uncomfortable" type="radio" name="piHip" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="piHip" value="No" required> No
+                            </div>
+                            <label>Thigh</label>
+                            <div class="painInThigh">
+                                
+                                <input class="uncomfortable" type="radio" name="piThigh" value="Yes" required> Yes
+                                <input class="uncomfortable" type="radio" name="piThigh" value="No" required> No
+                            </div>
+                                
+                            
                         </div>
                         <div>
-                            <label>Does the pain go away when they stop walking/exercise?</label>
+                            <h4>Does the pain go away when they stop walking/exercise?</h4>
                             <div class="uncomfortableSelection2">
-                                <input class="uncomfortable2" type="radio" name="uncomfortable2" value="yes" required> Yes
-                                <input class="uncomfortable2" type="radio" name="uncomfortable2" value="no" required> No
+                                <input class="uncomfortable2" type="radio" name="uncomfortable2" value="Yes" required> Yes
+                                <input class="uncomfortable2" type="radio" name="uncomfortable2" value="No" required> No
                             </div>
                         </div>
                         <div>
-                            <label>Does the patient smoke?</label>
+                            <h4>Does the patient smoke?</h4>
                             <div class="smokeSelection">
-                                <input class="smoke" type="radio" name="smoke" value="yes" required> Yes
-                                <input class="smoke" type="radio" name="smoke" value="no" required> No
+                                <input class="smoke" type="radio" name="smoke" value="Yes" required> Yes
+                                <input class="smoke" type="radio" name="smoke" value="No" required> No
                             </div>
                         </div>
                         <div>
-                            <label>Does the patient have diabetes</label>
+                            <h4>Does the patient have diabetes</h4>
                             <div class="diabetesSelection">
-                                <input class="diabetes" type="radio" name="diabetes" value="yes" required> Yes
-                                <input class="diabetes" type="radio" name="diabetes" value="no" required> No
+                                <input class="diabetes" type="radio" name="diabetes" value="Yes" required> Yes
+                                <input class="diabetes" type="radio" name="diabetes" value="No" required> No
+                            </div>
+                        </div>
+                        <div class="trueDiabetes">
+                            <label>Select the type of Diabetes the patient have</label>
+                            <div class="diabetesType">
+                                <div class="dChoiceOne">
+                                    <input type="radio" name="diabetesType" value="Type 1" required> Type 1
+                                </div>
+                                <div class="dChoiceTwo">
+                                    <input type="radio" name="diabetesType" value="Type 2" required> Type 2
+                                </div>
+                                <div class="dChoiceThree">
+                                    <input type="radio" name="diabetesType" value="Gestational" required> Gestational
+                                </div>
                             </div>
                         </div>
                         <div>
                             <h4>NOTE: Click submit first before proceeding to the next part. </h4>
-                        </div>    
+                        </div>  
                     </div>
                     <div class="form-two form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Summary of Assessment</h2>
+                        <p id="summaryParag">No Summary yet. Please submit the form first. Thank you!</p>
+                        <table style="text-align: left;" id="teybol">
+                            <tr style="text-align: center; font-size:1.5rem;">
+                                <th>Personal Information</th>
+                            </tr>
+                            <tr>
+                                <th>Full Name</th>
+                                <td id="fullName"></td>
+                            </tr>
+                            <tr>
+                                <th>Age</th>
+                                <td id="tAge"></td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <th>Gender</th>
+                                <td id="gender"></td>
+                            </tr>
+                            
+                            <tr>
+                                <th>Phone</th>
+                                <td id="phone"></td>
+                            </tr>
+                            <tr>
+                                <th style="vertical-align: top;">Address</th>
+                                <td id="address" ></td>
+                            </tr>
+                            <tr style="text-align: center; font-size:1.5rem;">
+                                <th>Medical History</th>
+                            </tr>
+                            <tr>
+                                <th style="vertical-align: top;">Blood Pressure</th>
+                                <td id="bp2"></td>
+                            </tr>
+                            <tr>
+                                <th>Height</th>
+                                <td id="height"></td>
+                            </tr>
+                            <tr>
+                                <th>Weight</th>
+                                <td id="weight2"></td>
+                            </tr>
+                            <tr>
+                                <th>Dizziness</th>
+                                <td id="dizziness"></td>
+                            </tr>
+                            <tr>
+                                <th>Headache</th>
+                                <td id="headache"></td>
+                            </tr>
+                            <tr>
+                                <th>Blurred Vision</th>
+                                <td id="blurred"></td>
+                            </tr>
+                            <tr>
+                                <th>Leg Pain</th>
+                                <td id="legPain"></td>
+                            </tr>
+                            <tr>
+                                <th>Uncomfortable Aching</th>
+                                <td id="uncomfortable"></td>
+                            </tr>
+                            <tr>
+                                <th>Fatigue</th>
+                                <td id="fatigue2"></td>
+                            </tr>
+                            <tr>
+                                <th>Tingling</th>
+                                <td id="tingling2"></td>
+                            </tr>
+                            <tr>
+                                <th>Cramping</th>
+                                <td id="cramping2"></td>
+                            </tr>
+                            <tr>
+                                <th>Pain in Feet</th>
+                                <td id="piFeet2"></td>
+                            </tr>
+                            <tr>
+                                <th>Pain in Calves</th>
+                                <td id="piCalves2"></td>
+                            </tr>
+                            <tr>
+                                <th>Pain in Buttocks</th>
+                                <td id="piButtocks2"></td>
+                            </tr>
+                            <tr>
+                                <th>Pain in Hip</th>
+                                <td id="piHip2"></td>
+                            </tr>
+                            <tr>
+                                <th>Pain in Thigh</th>
+                                <td id="piThigh2"></td>
+                            </tr>
+                            <tr>
+                                <th style="padding-right: 50px;">Pain goes away when they stop walking/exercise</th>
+                                <td id="uncomfortable2"></td>
+                            </tr>
+                            <tr>
+                                <th>Smoking</th>
+                                <td id="smoke2"></td>
+                            </tr>
+                            <tr>
+                                <th>Diabetes</th>
+                                <td id="diabetes2"></td>
+                            </tr>
+                        </table>
+                        <hr>
+                        
+                        <h3 id="ncp">Nurse Care Plan</h3>
+                        <div class="secondPart">
+                            <label>Diagnosis</label>
+                            <textarea placeholder="e.g. Hypertension" id="diagnosis"  required></textarea>
+                        </div>
+                        <div class="secondPart">
+                            <label>Recommendations</label>
+                            <textarea placeholder="e.g. Regular exercise" id="recommendations"  required></textarea>
+                        </div>
+                        <div class="secondPart">
+                            <label>Intervention</label>
+                            <textarea placeholder="e.g. Medication" id="intervention"  required></textarea>
+                        </div>
+                        <div class="secondPart">
+                            <label>Evaluation</label>
+                            <textarea placeholder="e.g. Regular check-ups" id="evaluation"  required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-three form-step">
                         <div class="bg-svg"></div>
                         <h2>Diagnosis</h2>
                         <p id="diagnosisParag">No Diagnosis yet. Please submit the form first. Thank you!</p>
                     </div>
-                    <div class="form-three form-step">
+                    <div class="form-four form-step">
                         <div class="bg-svg"></div>
                         <h2>Recommendations</h2>
                         <p id="planParag">No Recommendations yet. Please submit the form first. Thank you!</p>
                     </div>
-                    <div class="form-four form-step">
+                    <div class="form-five form-step">
                         <div class="bg-svg"></div>
                         <h2>Intervention</h2>
                         <p id="intParag">No interventions yet. Please submit the form first. Thank you!</p>
                     </div>
-                    <div class="form-five form-step">
+                    <div class="form-six form-step">
                         <div class="bg-svg"></div>
                         <h2>Evaluation</h2>
                         <p id="evalParag">No evalutaions yet. Please submit the form first. Thank you!</p>

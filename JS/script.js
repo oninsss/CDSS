@@ -31,7 +31,7 @@ const updateProgress = () => {
         submitButton.disabled = false;
     } else if (active === 2 && submitted === true) {
         prevButton.disabled = true;
-        submitButton.disabled = false;
+        submitButton.disabled = true;
     }else {
         prevButton.disabled = false;
         nextButton.disabled = false;
@@ -84,13 +84,21 @@ const bp = document.getElementById('bp');
 const height = document.getElementsByName('height')[0];
 const weight = document.getElementsByName('weight')[0];
 var bpParag = document.getElementById('bpParag');
+var medType = document.getElementById('medType');
 const weightParag = document.getElementById('weightParag');
 var fuBp = document.getElementById('fuBp');
+var fuBMI = document.getElementById('_dyExer');
 var fuWeight = document.getElementById('fuWeight');
+var dytMeds = document.getElementById('_dytMeds');
+var medForHype = document.getElementById('medForHype');
+let meds;
+let exer;
+const medsSelection = document.getElementsByClassName('medsSelection');
 
 bp.addEventListener('blur', function(event) {
     var bpValue = event.target.value.trim(); // Remove leading/trailing spaces
     var systolic, diastolic;
+    
 
     // Check if input is not empty
     if (bpValue !== '' && bpValue.includes('/')) {
@@ -103,24 +111,101 @@ bp.addEventListener('blur', function(event) {
                 bpParag.innerText = "Normal";
                 bpParag.style.display = 'block';
                 bpParag.style.color = 'green';
-                document.getElementById('bp2').innerText = bpValue + " mmHg | Normal";
+                dytMeds.style.display = 'none';
+                fuBp.style.display = 'none';
+                document.getElementById('bp2').innerText = bpValue + " mmHg";
+                document.getElementById('bp2').innerHTML += " | Normal";
+                medType.innerText = "";
+                medForHypeD = "";
             } else if (systolic >= 120 && systolic <= 129 && diastolic < 80) {
                 bpParag.innerText = "Elevated";
                 bpParag.style.display = 'block';
                 bpParag.style.color = 'orange';
-                document.getElementById('bp2').innerText = bpValue + " mmHg | Elevated";
+                dytMeds.style.display = 'none';
+                fuBp.style.display = 'none';
+                document.getElementById('bp2').innerText = bpValue + " mmHg";
+                document.getElementById('bp2').innerHTML += " | Elevated";
+                medType.innerText = "";
+                medForHypeD = "";
             } else if ((systolic >= 130 && systolic <= 139) || (diastolic >= 80 && diastolic <= 89)) {
                 bpParag.innerText = "Stage 1 Hypertension";
                 bpParag.style.display = 'block';
                 bpParag.style.color = 'red';
-                fuBp.style.display = 'block';
-                document.getElementById('bp2').innerText = bpValue + " mmHg | Stage 1";
+                dytMeds.style.display = 'flex';
+                dytMeds.addEventListener('click', function() {
+                    meds = getValue('meds');
+                    if (meds === 'Yes') {
+                        console.log('asdkhas');
+                        fuBp.style.display = 'block';
+                        medForHype.addEventListener('blur', function(event) {
+                            var medFH = event.target.value.trim();
+                            if (medFH.endsWith('pril')) {
+                                console.log('hehehe');
+                                medType.innerText = "ACE Inhibitor";
+                                medType.style.display = 'block';
+                                medType.style.color = 'green';
+                            } else if (medFH.endsWith('pine')) {
+                                medType.innerText = "ARB";
+                                medType.style.display = 'block';
+                                medType.style.color = 'green';
+                            } else if (medFH.endsWith('tan')) {
+                                medType.innerText = "Calcium Channel Blocker";
+                                medType.style.display = 'block';
+                                medType.style.color = 'green';
+                            } else {
+                                medType.innerText = "None";
+                                medType.style.display = 'none';
+                            }
+                            
+                        });
+                    } else {
+                        console.log('aaaaaa');
+                        console.log(meds);
+                        fuBp.style.display = 'none';
+                    }
+                });
+
+                document.getElementById('bp2').innerText = bpValue + " mmHg";
+                document.getElementById('bp2').innerText += " | Stage 1";
             } else {
                 bpParag.innerText = "Stage 2 Hypertension";
                 bpParag.style.display = 'block';
                 bpParag.style.color = 'red';
-                fuBp.style.display = 'block';
-                document.getElementById('bp2').innerText = bpValue + " mmHg | Stage 2";
+                dytMeds.style.display = 'flex';
+                dytMeds.addEventListener('click', function() {
+                    meds = getValue('meds');
+                    if (meds === 'Yes') {
+                        console.log('asdkhas');
+                        fuBp.style.display = 'block';
+                        medForHype.addEventListener('blur', function(event) {
+                            var medFH = event.target.value.trim();
+                            if (medFH.endsWith('pril')) {
+                                console.log('hehehe');
+                                medType.innerText = "ACE Inhibitor";
+                                medType.style.display = 'block';
+                                medType.style.color = 'green';
+                            } else if (medFH.endsWith('pine')) {
+                                medType.innerText = "ARB";
+                                medType.style.display = 'block';
+                                medType.style.color = 'green';
+                            } else if (medFH.endsWith('tan')) {
+                                medType.innerText = "Calcium Channel Blocker";
+                                medType.style.display = 'block';
+                                medType.style.color = 'green';
+                            } else {
+                                medType.innerText = "None";
+                                medType.style.display = 'none';
+                            }
+                            
+                        });
+                    } else {
+                        console.log('aaaaaa');
+                        console.log(meds);
+                        fuBp.style.display = 'none';
+                    }
+                });
+                document.getElementById('bp2').innerText = bpValue + " mmHg";
+                document.getElementById('bp2').innerText += " | Stage 2";
             }
         } else {
             // Invalid input, clear previous text
@@ -134,13 +219,22 @@ bp.addEventListener('blur', function(event) {
     }
 });
 
+let fuWeightV;
+var dyExerV;
+let fuw2 = document.getElementById('fuw2');
+
+fuw2.addEventListener('blur', function() {
+    fuWeightV = fuw2.value;
+    console.log('ITO YUNG HINAHANAP MO');
+});
+
+var weightText = "";
 
 weight.addEventListener('blur', function(){
     var heightValue = height.value;
     document.getElementById('height').innerText = heightValue + " cm";
 
     var weightValue = weight.value;
-    document.getElementById('weight2').innerText = weightValue + " kg";
     console.log(weightValue);
 
     // Check if both weight and height are valid numbers
@@ -153,24 +247,58 @@ weight.addEventListener('blur', function(){
                 weightParag.style.display = 'block';
                 weightParag.style.color = 'orange';
                 fuWeight.style.display = 'block';
-                document.getElementById('weight2').innerText += " | Underweight";
+                fuw2.addEventListener('input', function() {
+                    fuWeightV = fuw2.value;
+                    weightText = weightValue + " kg\nUnderweight\nLifestyle:\n ";
+                });
             } else if (bmi >= 18.5 && bmi <= 24.9) {
                 weightParag.innerText = "Normal";
-                weightParag.style.display = 'block';
+                weightParag.style.display = 'flex';
                 weightParag.style.color = 'green';
-                document.getElementById('weight2').innerText += " | Normal";
+                fuBMI.style.display = 'none';
+                fuWeight.style.display = 'none';
+                weightText += "\nNormal";
             } else if (bmi >= 25 && bmi <= 29.9) {
                 weightParag.innerText = "Overweight";
-                weightParag.style.display = 'block';
+                weightParag.style.display = 'flex';
                 weightParag.style.color = 'orange';
-                fuWeight.style.display = 'block';
-                document.getElementById('weight2').innerText += " | Overweight";
+                fuBMI.style.display = 'flex';
+                fuWeight.style.display = 'flex';
+                document.getElementsByClassName('exerSelection')[0].addEventListener('click', function() {
+                    exer = getValue('exer');
+                    
+                    console.log(exer);
+                    console.log(fuWeightV);
+                    if (exer === 'Yes') {
+                        weightText = weightValue + " kg\nOverweight\nExercises: Yes\nLifestyle:\n "
+                    } else {
+                        weightText = weightValue + " kg\nOverweight\nExercises: No\nLifestyle:\n ";
+                    }
+                });
+                // dyExerV = getValue('exer');
+                // fuw2.addEventListener('blur', function() {
+                //     fuWeightV = fuw2.value;
+                // });
+                // console.log(dyExerV);
+                // console.log(fuWeightV);
+                // if (dyExerV === 'Yes') {
+                //     document.getElementById('weight2').innerText += "\nOverweight\nExercises: Yes\nLifestyle:\n " + fuWeightV;
+                // } else {
+                //     document.getElementById('weight2').innerText += "\nOverweight\nExercises: No\nLifestyle:\n " + fuWeightV;
+                // }
             } else {
                 weightParag.innerText = "Obese";
                 weightParag.style.display = 'block';
                 weightParag.style.color = 'red';
-                fuWeight.style.display = 'block';
-                document.getElementById('weight2').innerText += " | Obese";
+                fuBMI.style.display = 'flex';
+                fuWeight.style.display = 'flex';
+                fuWeightV = fuw2.value;
+                dyExerV = getValue('exer');
+                if (dyExerV === 'Yes') {
+                    weightText = weightValue + " kg\nObese\nExercises: Yes\nLifestyle:\n ";
+                } else {
+                    weightText = weightValue + " kg\nObese\nExercises: No\nLifestyle:\n ";
+                }
             }
         } else {
             weightParag.innerText = "";
@@ -202,37 +330,41 @@ let piHip;
 let piThigh;
 
 var fullName = document.getElementById('fName');
+var fullNameD;
 fullName.addEventListener('input', () => {
     // Get the current value of fullName when it changes
-    var fullNameD = fullName.value;
+    fullNameD = fullName.value;
     console.log(fullNameD);
-    document.getElementById('fullName').innerText = fullNameD;
+    
 });
 
 var age2 = document.getElementById('pAge');
+var ageD;
 age2.addEventListener('input', () => {
     // Get the current value of age when it changes
-    var ageD = age2.value// Corrected line
+    ageD = age2.value// Corrected line
     console.log(ageD);
     console.log("hello");
-    document.getElementById('tAge').innerText = ageD;
+    
 });
 
 var genderInputs = document.querySelectorAll('input[name="gender"]');
 
+var genderValue;
 genderInputs.forEach(function(input) {
     input.addEventListener('change', function() {
-        var genderValue = this.value;
+        genderValue = this.value;
         console.log("Selected gender:", genderValue);
-        document.getElementById('gender').innerText = genderValue;
+        
     });
 });
 
 
 var phone = document.getElementById('telNum');
+var phoneD;
 phone.addEventListener('input', () => {
     // Get the current value of phone when it changes
-    var phoneD = phone.value;
+    phoneD = phone.value;
     document.getElementById('phone').innerText = phoneD;
     console.log(phoneD);
 });
@@ -243,17 +375,19 @@ var cityD = "";
 var zipD = "";
 
 var strAdd = document.getElementById('sttAdd');
+var strAddD;
 strAdd.addEventListener('blur', () => {
     // Get the current value of street address when it changes
-    var strAddD = strAdd.value;
+    strAddD = strAdd.value;
     fullAdd = fullAdd + strAddD + " ";
     console.log(fullAdd);
 });
 
 var city = document.getElementById('cityAdd');
+var cityD;
 city.addEventListener('blur', () => {
     // Get the current value of city when it changes
-    var cityD = city.value;
+    cityD = city.value;
     fullAdd = fullAdd + cityD + ", ";
     console.log(fullAdd);
 });
@@ -267,36 +401,68 @@ city.addEventListener('blur', () => {
 // });
 
 var zip = document.getElementById('zipAdd');
+var zipD;
 zip.addEventListener('blur', () => {
     // Get the current value of zip when it changes
-    var zipD = zip.value;
+    zipD = zip.value;
     console.log(zipD);
-    fullAdd = fullAdd + strAddD + cityD + zipD;
-    document.getElementById('address').innerText = fullAdd;
+    fullAdd = fullAdd + zipD;
+    
     console.log(fullAdd);
 });
 
 var medForHype = document.getElementById('medForHype');
+var medForHypeD = "";
 medForHype.addEventListener('blur', () => {
     // Get the current value of medForHype when it changes
-    var medForHypeD = medForHype.value;
+    medForHypeD = medForHype.value;
     console.log(medForHypeD);
-    document.getElementById('bp2').innerText += " | \nMedicines: " + medForHypeD;
+    
 });
 
 const diabetesTrue = document.getElementsByName('diabetes');
+const dcol = document.getElementsByClassName('dcol');
+const dType = document.getElementById('dType');
+const diabetesType2 = document.getElementsByClassName('diabetesType');
+var t1Fu = document.getElementById('_t1Fu');
+var t2Fu = document.getElementById('_t2Fu');
+var dcolVal;
 
-
+var counter = 0;
 
 diabetesTrue.forEach((diabetes) => {
     diabetes.addEventListener('click', () => {
         if (diabetes.value === 'Yes') {
-            document.getElementsByClassName('trueDiabetes')[0].style.display = 'block';
+            document.getElementsByClassName('trueDiabetes')[0].style.display = 'flex';
+            
+            Array.from(diabetesType2).forEach((dcol) => {
+
+                dcol.addEventListener('click', () => {
+                    diabetesType = getValue('diabetesType');
+                    console.log(diabetesType);
+                    if (diabetesType === 'Type 1') {
+                        document.getElementById('_t1Fu').style.display = 'flex';
+                        document.getElementById('_t2Fu').style.display = 'none';
+                        dcolVal = getValue('dt2')
+                    } else if (diabetesType === 'Type 2') {
+                        document.getElementById('_t2Fu').style.display = 'flex';
+                        document.getElementById('_t1Fu').style.display = 'none';
+                        dcolVal = getValue('dt3')
+                    } else {
+                        document.getElementById('_t1Fu').style.display = 'none';
+                        document.getElementById('_t2Fu').style.display = 'none';
+                        dcolVal = "";
+                        console.log('No diabetes type selected');
+                    }
+                });
+            });    
+
         } else {
             document.getElementsByClassName('trueDiabetes')[0].style.display = 'none';
         }
     });
 });
+
 
 
 submitButton.addEventListener('click', (event) => {
@@ -394,48 +560,62 @@ submitButton.addEventListener('click', (event) => {
     document.getElementById('piThigh2').innerText = piThigh;
     document.getElementById('uncomfortable2').innerText = uncomfortable2;
     document.getElementById('smoke2').innerText = smoke;
-    document.getElementById('diabetes2').innerText = diabetes + " | " + diabetesType;
+    document.getElementById('diabetes2').innerText = diabetes + " \n" + diabetesType + " \n" + dcolVal;
+    
+    document.getElementById('fullName').innerText = fullNameD;
+    document.getElementById('tAge').innerText = ageD;
+    document.getElementById('gender').innerText = genderValue;
+    document.getElementById('address').innerText = fullAdd;
+    document.getElementById('bp2').innerText += "\nMedicines:\n   - " + medForHypeD + "\n↳ " + medType.innerText;
+    document.getElementById('weight2').innerText = weightText + fuWeightV;
+    counter++;
 
-    diagnosis = document.getElementById('diagnosis').value;
-    recommendations = document.getElementById('recommendations').value;
-    intervention = document.getElementById('intervention').value;
-    evaluation = document.getElementById('evaluation').value;
+    // diagnosis = document.getElementById('diagnosis').value;
+    // recommendations = document.getElementById('recommendations').value;
+    // intervention = document.getElementById('intervention').value;
+    // evaluation = document.getElementById('evaluation').value;
 
-    if (diagnosis == '') {
+    if (counter == 0) {
         document.getElementById('diagnosisParag').innerText = "No Diagnosis yet. Please fill out the dianosis part on summary of assessment first";
     } else{
-        document.getElementById('diagnosisParag').innerText = diagnosis;
+        document.getElementById('diagnosisParag').innerText = "Activity intolerance related to peripheral artery disease (PAD) ";
     }
 
-    if (recommendations == '') {
+    if (counter == 0) {
         document.getElementById('planParag').innerText = "No Recommendations yet. Please fill out the recommendations part on summary of assessment first";
     } else{
-        document.getElementById('planParag').innerText = recommendations;
+        document.getElementById('planParag').innerHTML = "<b>Short term:</b> Assess level of activity tolerance and pain intensity, Educate the patient on the importance of having short periods of activity followed by rest, Implement pain management strategies<br><br><b>Long term:</b> Collaborate with a physical therapist, Continue to educating the patient on condition, Monitor the patient’s leg and thigh pain, Encourage patient to engage in daily supervised walking exercises, Evaluate the patient’s progress and modify the walking plan";
     }
 
-    if (intervention == '') {
+    if (counter == 0) {
         document.getElementById('intParag').innerText = "No Intervention yet. Please fill out the intervention part on summary of assessment first";
     } else{
-        document.getElementById('intParag').innerText = intervention;
+        document.getElementById('intParag').innerHTML = "Assess the client’s level of activity tolerance and difficulties in mobility<br><br>(Trigger)<br><b>Discontinue if:</b><br>Chest discomfort, dizziness, and a drop in vital signs<br><br>Have the client perform the activity more slowly, in a longer time with more rest or pauses, Examine the client's understanding of the reasons behind activity intolerance, Assess the client's degree of activity intolerance, Assess the client’s ability to move upper and lower extremity strength and further assess their degree of comfort, Assess the client’s coordination and balance, Assess and guide the client’s nutritional status and sleeping pattern, Gradually escalate activity using range-of-motion exercises in bed, Administer pain medications";
     }
 
-    if (evaluation == '') {
+    if (counter == 0) {
         document.getElementById('evalParag').innerText = "No Evaluation yet. Please fill out the evaluation part on summary of assessment first";
     } else{
-        document.getElementById('evalParag').innerText = evaluation;
+        document.getElementById('evalParag').innerText = "The patient’s level of activity tolerance and pain intensity were able to be assessed and monitored, application of warm compress on legs were performed, follow-up checkup for monitoring, application of home and bed excersises with assistance";
     }
     
 
     if (uncomfortable2 == 'Yes' || uncomfortable2 == 'No') {
         nextButton.dispatchEvent(new Event('click'));
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
     }
 
     document.getElementById('summaryParag').style.display = 'none';
     document.getElementById('teybol').style.display = 'block';
-    document.getElementById('ncp').style.display = 'block';
-    document.getElementsByClassName('secondPart')[0].style.display = 'flex';
-    document.getElementsByClassName('secondPart')[1].style.display = 'flex';
-    document.getElementsByClassName('secondPart')[2].style.display = 'flex';
-    document.getElementsByClassName('secondPart')[3].style.display = 'flex';
+    // document.getElementById('ncp').style.display = 'block';
+    // document.getElementsByClassName('secondPart')[0].style.display = 'flex';
+    // document.getElementsByClassName('secondPart')[1].style.display = 'flex';
+    // document.getElementsByClassName('secondPart')[2].style.display = 'flex';
+    // document.getElementsByClassName('secondPart')[3].style.display = 'flex';
+    
 });
 

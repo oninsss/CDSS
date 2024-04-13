@@ -176,7 +176,8 @@ img{
 
 .genderSelection, .dizzinessSelection, .diabetesSelection, .legPainSelection,
 .uncomfortableSelection, .uncomfortableSelection2, .smokeSelection, .headacheSelection,
-.blurredSelection, .dChoiceOne, .dChoiceTwo, .dChoiceThree{
+.blurredSelection, .dChoiceOne, .dChoiceTwo, .dChoiceThree, .medsSelection, .exerSelection, 
+.t1Fu, .dco1, .t2Fu{
     display: flex;
     flex-direction: row;
     gap: 1em;
@@ -184,15 +185,16 @@ img{
     align-items: center;
 }
 
-.uncomfortableSelection{
+.uncomfortableSelection, .dytMeds, .dyExer, .dChoiceOne, .dChoiceTwo, #fuWeight{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 10px;
     justify-content: end;
 }
 
 .uncomfortableAching, .fatigue, .tingling, .cramping, .painInFeet, 
-.painInCalves, .painInThigh, .painInButtocks, .painInHip{
+.painInCalves, .painInThigh, .painInButtocks, .painInHip, .dcol{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -201,6 +203,13 @@ img{
 
 #diagnosisParag, #planParag, #intParag, #evalParag, #summaryParag{
     color: var(--dark-color);
+}
+
+
+.dytMeds, .dyExer, .trueDiabetes, .t1Fu, .t2Fu{
+    display: none;
+    margin-left: 50px;
+
 }
 
 .form-box form {

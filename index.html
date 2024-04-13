@@ -96,9 +96,17 @@
                             <label>Blood Pressure</label>
                             <input type="text" placeholder="e.g. 150/90" id="bp" required>
                             <p id="bpParag"></p>
+                            <div class="dytMeds" id="_dytMeds">
+                                <label>Does the patient take medication for hypertension?</label>
+                                <div class="medsSelection">
+                                    <input  type="radio" name="meds" value="Yes" required> Yes
+                                    <input  type="radio" name="meds" value="No" required> No
+                                </div>
+                            </div>
                             <div id="fuBp">
-                                <label>Medicines for Hypertension</label>
+                                <label>What medication is being taken?</label>
                                 <input type="text" id="medForHype" placeholder="e.g. Enalarpril">
+                                <p id="medType"></p>
                             </div>
                             
                         </div>
@@ -110,9 +118,16 @@
                             <label>Weight (kg)</label>
                             <input type="number" placeholder="e.g. 70" id="weight" name="weight"required>
                             <p id="weightParag"></p>
+                            <div class="dyExer" id="_dyExer">
+                                <label>Does the patient exercise regularly?</label>
+                                <div class="exerSelection">
+                                    <input  type="radio" name="exer" value="Yes" required> Yes
+                                    <input  type="radio" name="exer" value="No" required> No
+                                </div>
+                            </div>
                             <div id="fuWeight">
                                 <label>Describe the patient's lifestyle</label>
-                                <input type="text"  placeholder="e.g. My diet mainly consists of fast food and processed meals... ">
+                                <input type="text" id="fuw2" placeholder="e.g. My diet mainly consists of fast food and processed meals... ">
                             </div>
                         </div>
                         <div>
@@ -224,15 +239,30 @@
                         </div>
                         <div class="trueDiabetes">
                             <label>Select the type of Diabetes the patient have</label>
-                            <div class="diabetesType">
-                                <div class="dChoiceOne">
-                                    <input type="radio" name="diabetesType" value="Type 1" required> Type 1
+                            <div class="diabetesType" id="_diabetesType">
+                                <div class="dChoiceOne" id="_dChoiceOne">
+                                    <div class="dco1" id="_dcol">
+                                        <input type="radio" name="diabetesType" value="Type 1" id="dType" required> Type 1
+                                    </div>
+                                    
+                                    <div class="t1Fu" id="_t1Fu">
+                                        <input type="radio" name="dt2" value="Diabetes insipidus" required> Diabetes insipidus
+                                        <input type="radio" name="dt2" value="Diabetes mellitus" required> Diabetes mellitus
+                                    </div>
                                 </div>
                                 <div class="dChoiceTwo">
-                                    <input type="radio" name="diabetesType" value="Type 2" required> Type 2
+                                    <div class="dcol" id="_dcol2">
+                                        <input type="radio" name="diabetesType" value="Type 2" required> Type 2
+                                    </div>
+                                    <div class="t2Fu" id="_t2Fu">
+                                        <input type="radio" name="dt3" value="Diabetes insipidus" required> Diabetes insipidus
+                                        <input type="radio" name="dt3" value="Diabetes mellitus" required> Diabetes mellitus
+                                    </div>
                                 </div>
                                 <div class="dChoiceThree">
-                                    <input type="radio" name="diabetesType" value="Gestational" required> Gestational
+                                    <div class="dcol">
+                                        <input type="radio" name="diabetesType" value="Gestational" required> Gestational
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -282,7 +312,7 @@
                                 <td id="height"></td>
                             </tr>
                             <tr>
-                                <th>Weight</th>
+                                <th style="vertical-align: top;">Weight</th>
                                 <td id="weight2"></td>
                             </tr>
                             <tr>
@@ -338,7 +368,7 @@
                                 <td id="piThigh2"></td>
                             </tr>
                             <tr>
-                                <th style="padding-right: 50px;">Pain goes away when they stop walking/exercise</th>
+                                <th style="padding-right: 50px;" style="vertical-align: top;">Pain goes away when they stop walking/exercise</th>
                                 <td id="uncomfortable2"></td>
                             </tr>
                             <tr>
@@ -346,13 +376,13 @@
                                 <td id="smoke2"></td>
                             </tr>
                             <tr>
-                                <th>Diabetes</th>
+                                <th style="vertical-align: top;">Diabetes</th>
                                 <td id="diabetes2"></td>
                             </tr>
                         </table>
                         <hr>
                         
-                        <h3 id="ncp">Nurse Care Plan</h3>
+                        <!-- <h3 id="ncp">Nurse Care Plan</h3>
                         <div class="secondPart">
                             <label>Diagnosis</label>
                             <textarea placeholder="e.g. Hypertension" id="diagnosis"  required></textarea>
@@ -368,7 +398,7 @@
                         <div class="secondPart">
                             <label>Evaluation</label>
                             <textarea placeholder="e.g. Regular check-ups" id="evaluation"  required></textarea>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="form-three form-step">
                         <div class="bg-svg"></div>
